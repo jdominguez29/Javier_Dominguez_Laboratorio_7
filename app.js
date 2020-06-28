@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 3000
+
+const connectDB =require('./dbConfig');
+
+const port = 3000;
 
 const ESTUDIANTES = [
     {
@@ -52,5 +55,11 @@ app.put('/estudiantes/:indice', (req,res) => {
      ESTUDIANTES.splice(req.params.indice,1);
      res.send("Estudiante Eliminado");
   });
+
+connectDB().then(() => {
+    app.listen(port, ()=>{
+        console.log(`Ejecutando en el puerto ${port}`);
+    });
+});
 
 app.listen(port,() => console.log('Example app listening at http://localhost:'+port));
