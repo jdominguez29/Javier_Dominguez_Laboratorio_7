@@ -12,4 +12,4 @@ const mongoOptions = {
 
 const connectDb = () => mongoose.mongoose.connect(MONGO_URL, mongoOptions);
 
-module.exports =connectDb
+module.exports =connectDb;
